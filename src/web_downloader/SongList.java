@@ -11,6 +11,23 @@ import java.util.LinkedList;
 public class SongList {
     private LinkedList<Song> songLinkedList = new LinkedList<Song>();
 
+    public void searchAndDownloadAllSongs(){
+        WebDownload webDownload = new WebDownload();
+        Search search = new Search();
+        for(Song song: songLinkedList){
+            String searchTerm = song.getYoutubeQuery();
+
+            try{
+                String videoId = search.videoIdFromQueryTerm(searchTerm);
+                webDownload.downloadMp3FromYoutube(song.formFilename(), videoId );
+                System.out.println("Successful download for: "+song);
+            }
+            catch(Exception e){
+                System.out.println("Exception for: "+song);
+            }
+        }
+    }
+
     public void loadSongTitlesFromFile(String filename) throws IOException {
 
         BufferedReader br = new BufferedReader(new FileReader(filename));

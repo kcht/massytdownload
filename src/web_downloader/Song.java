@@ -33,10 +33,10 @@ public class Song {
     }
 
     public String formFilename(){
-        return title+"_"+author;
+        return title+"_"+author+".mp3";
     }
 
     public String toString(){
-        return "; author: "+author+"title: "+title;
+        return "; author: "+author+", title: "+title;
     }
 }
