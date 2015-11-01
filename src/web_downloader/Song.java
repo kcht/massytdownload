@@ -7,6 +7,11 @@ public class Song {
     private String title;
     private String author;
 
+    public Song(String author, String title){
+        this.title = title;
+        this.author = author;
+    }
+
     public String getAuthor() {
         return author;
     }
@@ -27,11 +32,11 @@ public class Song {
         return author+" - "+title;
     }
 
-    public String getFilename(){
+    public String formFilename(){
         return title+"_"+author;
     }
 
     public String toString(){
-        return "title: "+title+"; author"+author;
+        return "; author: "+author+"title: "+title;
     }
 }

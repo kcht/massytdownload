@@ -7,11 +7,11 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="google-api-services-youtube-v3-rev107-1.18.0-rc" level="project" />
     <orderEntry type="library" name="google-api-client-1.20.0-sources" level="project" />
     <orderEntry type="library" name="google-api-client-repackaged-com-google-common-base-1.2.2-alpha" level="project" />
     <orderEntry type="library" name="commons-logging-1.1.1-sources" level="project" />
     <orderEntry type="library" name="com.google.api-client:google-api-client:1.20.0" level="project" />
+    <orderEntry type="library" name="com.google.apis:google-api-services-youtube:v3-rev107-1.18.0-rc" level="project" />
   </component>
 </module>
 

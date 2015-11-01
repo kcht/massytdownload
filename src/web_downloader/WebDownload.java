@@ -11,14 +11,19 @@ import java.net.URL;
  */
 public class WebDownload {
 
-    public void downloadMp3FromYoutube(String filename, String youtubeLink)
+    public void downloadMp3FromYoutube(String filename, String videoId)
              throws MalformedURLException, IOException {
-        String downloadUrl = createDownloadLinkFromYoutube(youtubeLink);
+        String downloadUrl = createDownloadLinkFromYoutube(videoId);
         saveUrl(filename, downloadUrl);
     }
 
-    private String createDownloadLinkFromYoutube(String youtubeLink){
-        return "http://youtubeinmp3.com/fetch/?video=" + youtubeLink;
+    private String createDownloadLinkFromYoutube(String videoId){
+        String link = "http://youtubeinmp3.com/fetch/?video=http://www.youtube.com/watch?v="+videoId;
+        System.out.println(link);
+
+     //  link = "http://youtubeinmp3.com/fetch/?video=http://www.youtube.com/watch?v=i62Zjga8JOM";
+        System.out.println(link);
+        return link;
     }
 
     private void saveUrl(final String filename, final String urlString)

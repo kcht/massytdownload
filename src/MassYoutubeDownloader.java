@@ -4,6 +4,8 @@
 
 import web_downloader.*;
 
+import java.io.IOException;
+
 public class MassYoutubeDownloader {
     public static void main(String [] args){
         //create list of youtube search result -> links
@@ -11,14 +13,25 @@ public class MassYoutubeDownloader {
         //make exec
         //make graphic interface / go web
         try {
-            WebDownload webDownload = new WebDownload();
-            String url = "http://youtubeinmp3.com/fetch/?video=https://www.youtube.com/watch?v=mW1dbiD_zDk";
-            webDownload.downloadMp3FromYoutube("new_file.mp3", url);
+        // loadSongs();
+            Search search = new Search();
+            String videoId = search.videoIdFromQueryTerm("TAINTED LOVE ");
+            System.out.println(videoId);
+
+           WebDownload webDownload = new WebDownload();
+           webDownload.downloadMp3FromYoutube("songo.mp3", videoId);
         }
         catch(Exception e){
             System.out.println("Exception!");
+            e.printStackTrace();
         }
     System.out.println("This is a MassYoutubeDownloader");
+    }
+
+    public static void loadSongs() throws IOException {
+        SongList songList = new SongList();
+        songList.loadSongTitlesFromFile("song_test.txt");
+        System.out.println(songList);
     }
 
     //"AIzaSyCrFHo70zxdaTZ-Nhc0tKNXqWx9AkK0HAs";

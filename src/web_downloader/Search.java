@@ -62,10 +62,10 @@ public class Search {
      * Initializes YouTube object to search for videos on YouTube (Youtube.Search.List). The program
      * then prints the names and thumbnails of each of the videos (only first 50 videos).
      *
-     * @param args command line args.
      */
-    public static void main(String[] args) {
+    public String videoIdFromQueryTerm(String queryTerm) {
         // Read the developer key from youtube.properties
+        String videoId = null;
         Properties properties = new Properties();
 //        try {
 //            InputStream in = Search.class.getResourceAsStream("/" + PROPERTIES_FILENAME);
@@ -75,7 +75,7 @@ public class Search {
 //            System.err.println("There was an error reading " + PROPERTIES_FILENAME + ": " + e.getCause()
 //                    + " : " + e.getMessage());
 //            System.exit(1);
-//        }kasia
+//        }
 
 
         try {
@@ -89,7 +89,7 @@ public class Search {
             }).setApplicationName("youtube-cmdline-search-sample").build();
 
             // Get query term from user.
-            String queryTerm = getInputQuery();
+           // String queryTerm = getInputQuery();
 
             YouTube.Search.List search = youtube.search().list("id,snippet");
       /*
@@ -115,9 +115,12 @@ public class Search {
 
             List<SearchResult> searchResultList = searchResponse.getItems();
 
-            if (searchResultList != null) {
-                prettyPrint(searchResultList.iterator(), queryTerm);
-            }
+            SearchResult searchResult = searchResultList.get(0);
+            ResourceId rId = searchResult.getId();
+            videoId = rId.getVideoId();
+//            if (searchResultList != null) {
+//                prettyPrint(searchResultList.iterator(), queryTerm);
+//            }
         } catch (GoogleJsonResponseException e) {
             System.err.println("There was a service error: " + e.getDetails().getCode() + " : "
                     + e.getDetails().getMessage());
@@ -126,6 +129,7 @@ public class Search {
         } catch (Throwable t) {
             t.printStackTrace();
         }
+        return videoId;
     }
 
     /*
